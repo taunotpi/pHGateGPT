@@ -74,11 +74,10 @@ if __name__ == "__main__":
     check_data_file()
 
     # Step-by-step pipeline
-    run_script("Train_StandardGPT.py")
-    run_script("Train_PHGateGPT.py")
-    run_script("Eval1_Macro.py")
-    run_script("Eval2_Micro.py")
-    run_script("gating_plot.py")
+    run_script("StandardGPT_Training.py")
+    run_script("pHGate_Training")
+    run_script("Eval 1 (Macro).py")
+    run_script("Eval 2 (Micro).py")
 
     print("\n[INFO] All steps completed successfully!")
     print("[INFO] Review logs, plots, and JSON output for results.")
