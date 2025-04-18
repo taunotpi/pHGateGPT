@@ -88,7 +88,7 @@ if __name__ == "__main__":
 
     # Step-by-step pipeline
     run_script("StandardGPT_Training.py")
-    run_script("pHGate_Training")
+    run_script("pHGate_Training.py")
     run_script("Eval 1 (Macro).py")
     run_script("Eval 2 (Micro).py")
 
