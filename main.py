@@ -32,11 +32,10 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 DATA_FILE = "tokenized_data.json"
 REQUIRED_FILES = [
     "Dataset_Construct.py",
-    "Train_StandardGPT.py",
-    "Train_PHGateGPT.py",
-    "Eval1_Macro.py",
-    "Eval2_Micro.py",
-    "gating_plot.py"
+    "StandardGPT_Training.py",
+    "pHGate_Training.py",
+    "Eval 1 (Macro).py",
+    "Eval2 (Micro).py",
 ]
 
 # ---------------------------------------------
