@@ -56,12 +56,16 @@ def check_data_file():
 
 def run_script(script_name):
     """Utility to run a script with subprocess and log its output."""
-    print(f"\n[INFO] Running {script_name}...")
+    print(f"\nRunning {script_name}...")
     log_file_name = f"{os.path.splitext(script_name)[0]}.log"
     with open(log_file_name, "w") as log_file:
         subprocess.run(["python", script_name], check=True, stdout=log_file, stderr=subprocess.STDOUT)
-    print(f"[INFO] Logs for {script_name} saved to {log_file_name}")
-
+    
+    # Display log file contents after the script finishes
+    with open(log_file_name, "r") as log_file:
+        print(f"\n[INFO] Logs for {script_name}:\n{'='*40}\n")
+        print(log_file.read())  # Print the log contents to the console
+        print(f"\n{'='*40}\n[INFO] End of logs for {script_name}\n")
 # ---------------------------------------------
 # Main Experiment Pipeline
 # ---------------------------------------------
