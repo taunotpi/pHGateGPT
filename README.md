@@ -11,9 +11,13 @@ This project implements and evaluates a novel variant of the GPT model, called *
 
 A baseline **Standard GPT** model is also included for comparison. The project evaluates both models using macro-level (Eval1) and micro-level (Eval2) analysis frameworks.
 
-***Note on File Paths*** Both Datasets.py and Biotokenizer.py needed absolute paths for loading data and saving output  Before running change the appropriate variables in the scripts.
-Line 5 in Datasets.py: BASE_OUTPUT_DIR = "/Users/samlevy/PycharmProjects/FinalV04/data"
-Line 121 in Biotokenizer.py: data_folder = "/Users/samlevy/PycharmProjects/FinalV04/data"
+****Note Before Running main.py***
+Before executing main.py, please ensure that the following preprocessing steps are completed:
+
+*Datasets.py* – This script downloads all necessary biological data from external databases (e.g., NCBI, KEGG, UniProt). Run this first to populate the raw data directory.
+
+*BioTokenizer.py* – This script processes the downloaded data into a machine-learning-ready format. It tokenizes biological sequences using a sliding window and saves them as labeled JSON files for training.
+
 
 
 ## Repository Structure
