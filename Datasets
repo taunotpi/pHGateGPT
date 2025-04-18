@@ -2,7 +2,7 @@ import os
 import requests
 
 # Base directory for data downloads
-BASE_OUTPUT_DIR = "/Users/samlevy/PycharmProjects/FinalV04/data"
+BASE_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 os.makedirs(BASE_OUTPUT_DIR, exist_ok=True)
 
 # -------------------------------------
