@@ -35,7 +35,7 @@ REQUIRED_FILES = [
     "StandardGPT_Training.py",
     "pHGate_Training.py",
     "Eval 1 (Macro).py",
-    "Eval2 (Micro).py",
+    "Eval 2 (Micro).py",
 ]
 
 # ---------------------------------------------
