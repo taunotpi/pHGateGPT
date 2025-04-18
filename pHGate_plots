@@ -1,47 +1,27 @@
+"""
+Created on March 31, 2025
+
+@author: samlevy
+
+pH Gating Activation Visualization Script
+"""
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.cluster import KMeans
-from sklearn.datasets import make_blobs  # Import this at the top
-
-def elbow_plot(data, max_clusters=10):
-    """
-    Creates an elbow plot to determine the optimal number of clusters for KMeans clustering.
-
-    Args:
-    - data (np.array or pd.DataFrame): The dataset to be clustered.
-    - max_clusters (int): The maximum number of clusters to test.
-
-    Returns:
-    - None
-    """
-    distortions = []
-    K = range(1, max_clusters + 1)
-
-    for k in K:
-        kmeans = KMeans(n_clusters=k)
-        kmeans.fit(data)
-        distortions.append(kmeans.inertia_)  # Sum of squared distances to closest cluster center
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(K, distortions, 'bx-')
-    plt.xlabel('Number of clusters (k)')
-    plt.ylabel('Distortion')
-    plt.title('Elbow Plot for Optimal k')
-    plt.show()
 
 
 def plot_gating_activations(gating_activations, labels=None):
     """
-    Plots the gating activations using a heatmap.
+    Plots the gating activations with a heatmap.
 
     Args:
     - gating_activations (np.array or list of list): The gating activations to plot.
     - labels (list, optional): The labels for the gating activations.
 
     Returns:
-    - None
+    - A plot that isn't a purple square
     """
     if labels is None:
         labels = list(range(len(gating_activations)))
@@ -56,9 +36,6 @@ def plot_gating_activations(gating_activations, labels=None):
 
 # Example usage:
 if __name__ == "__main__":
-    # Example data for elbow plot
-    data, _ = make_blobs(n_samples=300, centers=4, cluster_std=0.60, random_state=0)
-    elbow_plot(data, max_clusters=10)
 
     # Example data for gating activations
     gating_activations = np.random.rand(10, 10)  # Replace with actual gating activations data
