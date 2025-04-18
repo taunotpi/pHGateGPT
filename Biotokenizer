@@ -118,6 +118,6 @@ class BioTokenizerV2:
 
 if __name__ == "__main__":
     tokenizer = BioTokenizerV2()
-    data_folder = "/Users/samlevy/PycharmProjects/FinalV04/data"
-    output_file = "tokenized_data.json"
+    data_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    output_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tokenized_data.json")
     tokenizer.preprocess(data_folder, window_size=1024, stride=512, output_file=output_file)
