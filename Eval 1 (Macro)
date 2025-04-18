@@ -1,3 +1,10 @@
+"""
+Created on April 09, 2025
+
+@author: samlevy
+
+Evaluation 1 a Macro point of view
+"""
 import os
 import json
 import math
@@ -9,14 +16,11 @@ from tqdm import tqdm
 from Dataset_Construct import TokenizedBioDataset
 from torch.nn.utils.rnn import pad_sequence
 
-
-####################################
 # Custom collate function with dynamic macro-level padding.
-####################################
 def macro_collate_fn(batch):
     """
     Custom collate function for dynamically padding input_ids and labels.
-    This is designed for macro-level evaluation where the focus is on
+    Designed for macro-level evaluation where the focus is on
     overall performance and comparison between models.
     """
     input_ids = [item["input_ids"] for item in batch]
@@ -31,16 +35,15 @@ def macro_collate_fn(batch):
     return {"input_ids": padded_input_ids, "labels": padded_labels}
 
 
-####################################
 # Macro-level evaluation function.
 # Focused on calculating overall loss, perplexity, and other key metrics
 # for comparing models' high-level performance.
-####################################
+
 def evaluate_language_model(model, dataloader, device, criterion, model_type):
     """
     Evaluate the language model at the macro level.
     This function calculates overall loss, perplexity, and key evaluation metrics
-    for comparing the performance of different models (e.g., standard GPT vs. pH-Gated GPT).
+    for comparing the performance of  standard GPT vs. pHGate GPT.
     """
     model.eval()
     total_loss = 0.0
@@ -77,15 +80,11 @@ def evaluate_language_model(model, dataloader, device, criterion, model_type):
     return avg_loss, perplexity, results
 
 
-####################################
-# Helper functions for macro-level metrics.
-####################################
-# These functions compute key metrics used in macro-level evaluation.
-####################################
+# Helper functions that compute key metrics used in macro-level evaluation.
 def compute_enzyme_focus(attentions, labels):
     """
-    Compute average attention to enzyme-related tokens (label == 0).
-    This function operates at the macro level, computing a single summary score
+    Compute average attention to enzyme-related tokens.
+    Operating at the macro level, computing a single summary score
     for all enzyme-related tokens across the dataset.
     """
     enzyme_mask = (labels == 0)  # Mask for enzyme-related tokens
@@ -93,7 +92,7 @@ def compute_enzyme_focus(attentions, labels):
 
     for attn in attentions:
         # Average attention across all heads
-        avg_attn = attn.mean(dim=1)  # Shape: (batch, seq_len, seq_len)
+        avg_attn = attn.mean(dim=1)  
 
         batch_size, seq_len, _ = avg_attn.shape
         enzyme_focus_per_batch = []
@@ -122,12 +121,8 @@ def compute_novel_enzyme_detection(gating_activations):
     return avg_gate > threshold
 
 
-####################################
 # Main execution: macro-level evaluation and model comparison.
-####################################
-# This section sets up the dataset, loads models, and performs macro-level evaluation
-# to compare the performance of Standard GPT and pH-Gated GPT models.
-####################################
+
 def compare_models():
     """
     Compare the performance of Standard GPT and pH-Gated GPT models
@@ -152,7 +147,6 @@ def compare_models():
     phgate_model = GPTModelPHGate(vocab_size=50257, embed_size=768, num_heads=12, num_layers=12, dropout=0.1,
                                   max_seq_len=1024, forward_expansion=4)
 
-    # Move models to device
     standard_model.to(device)
     phgate_model.to(device)
 
