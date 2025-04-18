@@ -55,17 +55,32 @@ def check_data_file():
         subprocess.run(["python", "Dataset_Construct.py"])
 
 def run_script(script_name):
-    """Utility to run a script with subprocess and log its output."""
-    print(f"\nRunning {script_name}...")
+    """Run a script and display logs in real time while saving them to a log file."""
+    print(f"\n[INFO] Running {script_name}...")
     log_file_name = f"{os.path.splitext(script_name)[0]}.log"
-    with open(log_file_name, "w") as log_file:
-        subprocess.run(["python", script_name], check=True, stdout=log_file, stderr=subprocess.STDOUT)
     
-    # Display log file contents after the script finishes
-    with open(log_file_name, "r") as log_file:
-        print(f"\n[INFO] Logs for {script_name}:\n{'='*40}\n")
-        print(log_file.read())  # Print the log contents to the console
-        print(f"\n{'='*40}\n[INFO] End of logs for {script_name}\n")
+    # Open the log file in write mode
+    with open(log_file_name, "w") as log_file:
+        # Use subprocess.Popen to capture real-time logs
+        process = subprocess.Popen(
+            ["python", script_name],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,  # Ensures the output is in text format
+        )
+        
+        # Read and print each line in real time
+        for line in process.stdout:
+            print(line, end="")  # Print to console
+            log_file.write(line)  # Write to log file
+        
+        # Wait for the process to complete
+        process.wait()
+        
+        if process.returncode == 0:
+            print(f"\n[INFO] {script_name} completed successfully!")
+        else:
+            print(f"\n[ERROR] {script_name} failed with exit code {process.returncode}")
 # ---------------------------------------------
 # Main Experiment Pipeline
 # ---------------------------------------------
