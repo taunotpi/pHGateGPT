@@ -103,10 +103,27 @@ This will produce a `tokenized_data.json` file containing labeled windows with `
 
 ## Dependencies
 - Python 3.8+
-- PyTorch
-- NumPy
+- torch
+- numpy
 - matplotlib
 - tqdm
+- transformers
+- requests
+- beautifulsoup4
+- seaborn
+
+Script | Key Libraries Used | Purpose
+Datasets.py | os, requests | Downloads biological data (e.g., FASTA, HTML) from public repositories.
+BioTokenizer.py | os, json, gzip, transformers.GPT2Tokenizer, bs4.BeautifulSoup | Tokenizes biological sequences using a GPT-style tokenizer with sliding windows.
+Dataset_Construct.py | torch, torch.utils.data, pad_sequence, json, collections.Counter | Builds tokenized datasets for training and evaluation.
+StandardGPT.py | torch, torch.nn, math | Defines the baseline GPT model architecture.
+PHGateGPT.py | torch, torch.nn, math | Defines the pH-Gated GPT architecture with a learnable gating mechanism.
+Train_StandardGPT.py | torch, math, time, torch.optim, DataLoader | Trains the baseline GPT model on tokenized data.
+Train_PHGateGPT.py | torch, json, matplotlib.pyplot, time, DataLoader | Trains the pH-Gated GPT model and logs gating metrics.
+Eval1_Macro.py | torch, math, numpy, json, tqdm, DataLoader | Performs macro-level evaluation (e.g., average perplexity, attention focus).
+Eval2_Micro.py | torch, math, numpy, matplotlib.pyplot, tqdm, DataLoader | Performs micro-level evaluation with batch-level loss, gating activation, and enzyme focus.
+Main.py | os, subprocess | Master script to run the full pipeline end-to-end (tokenization, training, evaluation, etc).
+gating_plot.py (optional) | matplotlib, seaborn, pandas, numpy | Produces heatmaps and scatterplots for pH gating diagnostics.
 
 ## Key Takeaways
 - pH-Gated GPT shows superior convergence and generalization.
