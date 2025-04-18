@@ -10,7 +10,7 @@ The core architecture remains the same: a stack of transformer blocks with multi
 Minor adjustments were made for logging, clarity, and alignment with how metrics are handled in
 the pH-Gated GPT model for consistent comparison during experimentation.
 
-Changes from the instructor’s original implementation:
+Changes from the course's original implementation:
 - Added detailed docstrings and inline biological/machine learning commentary.
 - Integrated `return_attention` toggles to better analyze model behavior during training.
 - Minor reshaping consistency and device handling in `__main__` for generation.
@@ -22,9 +22,7 @@ import torch.nn.functional as F
 import math
 
 
-####################################
 # Self-Attention Mechanism
-####################################
 class SelfAttention(nn.Module):
     """
     Implements multi-head self-attention using scaled dot-product attention.
@@ -84,9 +82,7 @@ class SelfAttention(nn.Module):
         return out, attention
 
 
-####################################
 # Transformer Block (No pH Gating)
-####################################
 class TransformerBlock(nn.Module):
     """
     A single transformer block consisting of:
@@ -119,16 +115,13 @@ class TransformerBlock(nn.Module):
             return {"output": out, "attentions": attn_weights}
         return {"output": out}
 
-
-####################################
 # GPT Model (Baseline)
-####################################
 class GPTModelStandard(nn.Module):
     """
     GPT-style model built from a stack of transformer blocks.
 
     This model serves as the baseline for comparison against
-    the pH-Gated GPT variant. It uses positional embeddings
+    the pHGate GPT. Using positional embeddings
     and a stack of transformer layers to learn autoregressive token predictions.
     """
 
@@ -180,13 +173,11 @@ class GPTModelStandard(nn.Module):
         return output
 
 
-####################################
-# Example Usage (Testing)
-####################################
+
+# Example Usage 
 if __name__ == "__main__":
-    # ---------------------------
+
     # Hyperparameters
-    # ---------------------------
     embed_size = 128
     num_layers = 4
     heads = 8
@@ -195,9 +186,7 @@ if __name__ == "__main__":
     dropout = 0.1
     forward_expansion = 4
 
-    # ---------------------------
     # Instantiate and Test Model
-    # ---------------------------
     model = GPTModelStandard(
         vocab_size, embed_size, heads, num_layers, dropout, max_length, forward_expansion
     )
