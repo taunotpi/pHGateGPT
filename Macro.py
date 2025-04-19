@@ -139,7 +139,7 @@ def compare_models():
 
     # Load models
     from StandardGPT import GPTModelStandard
-    from PHGateGPT import PHGateGPT as GPTModelPHGate
+    from pHGateGPT import PHGateGPT as GPTModelPHGate
 
     # Initialize models
     standard_model = GPTModelStandard(vocab_size=50257, embed_size=768, num_heads=12, num_layers=12, dropout=0.1,
