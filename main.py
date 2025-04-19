@@ -25,8 +25,8 @@ REQUIRED_FILES = [
     "Dataset_Construct.py",
     "StandardGPT_Training.py",
     "pHGate_Training.py",
-    "Eval 1 (Macro).py",
-    "Eval 2 (Micro).py",
+    "Eval1_Macro.py",
+    "Eval2_Micro.pyy",
 ]
 
 # Utility Functions
@@ -75,8 +75,8 @@ if __name__ == "__main__":
     # Step-by-step pipeline
     run_script("StandardGPT_Training.py")
     run_script("pHGate_Training.py")
-    run_script("Eval 1 (Macro).py")
-    run_script("Eval 2 (Micro).py")
+    run_script("Eval1_Macro.py")
+    run_script("Eval2_Micro.py).py")
 
     print("\nAll steps completed successfully!")
     print("Review the logs, plots, and JSON output for results.")
