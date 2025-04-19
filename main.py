@@ -26,7 +26,7 @@ REQUIRED_FILES = [
     "StandardGPT_Training.py",
     "pHGate_Training.py",
     "Eval1_Macro.py",
-    "Eval2_Micro.pyy",
+    "Eval2_Micro.py",
 ]
 
 # Utility Functions
