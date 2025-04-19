@@ -76,7 +76,7 @@ if __name__ == "__main__":
     run_script("StandardGPT_Training.py")
     run_script("pHGate_Training.py")
     run_script("Eval1_Macro.py")
-    run_script("Eval2_Micro.py).py")
+    run_script("Eval2_Micro.py")
 
     print("\nAll steps completed successfully!")
     print("Review the logs, plots, and JSON output for results.")
