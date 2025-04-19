@@ -157,7 +157,7 @@ def main():
                             collate_fn=my_collate_fn, drop_last=True)
 
     from StandardGPT import GPTModelStandard
-    from PHGateGPT import PHGateGPT as GPTModelPHGate
+    from pHGateGPT import PHGateGPT as GPTModelPHGate
 
     standard_model = GPTModelStandard(vocab_size=50257, embed_size=768, num_heads=12, num_layers=12, dropout=0.1,
                                       max_seq_len=1024)
