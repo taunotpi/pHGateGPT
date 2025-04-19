@@ -26,9 +26,9 @@ Before executing main.py, please ensure that the following preprocessing steps a
 ├── Biotokenizer.py             # Implements a custom tokenizer for handling biological sequence data
 ├── Dataset_Construct.py        # Data loading and tokenization (BioTokenizerV2)
 ├── StandardGPT.py              # Standard GPT model implementation
-├── PHGateGPT.py                # pHGate GPT model implementation
-├── Train_StandardGPT.py        # Training script for Standard GPT
-├── Train_PHGateGPT.py          # Training script for pHGate GPT
+├── pHGateGPT.py                # pHGate GPT model implementation
+├── StandardGPT_Training.py     # Training script for Standard GPT
+├── pHGate_Training.py          # Training script for pHGate GPT
 ├── Eval1_Macro.py              # Macro-level evaluation (loss, perplexity, attention focus)
 ├── Eval2_Micro.py              # Micro-level evaluation (gating behavior, enzyme detection)
 
